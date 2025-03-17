@@ -10,7 +10,27 @@
     <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
   </head>
   <body>
-    <div id="container" style="width: 100%; height: 500px"></div>
+    <div>
+      <h1>test</h1>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+      <button>asda</button>
+    </div>
+    <div id="container" style="width: 100%; height: 100vh"></div>
 
     <script>
       let Data = {
@@ -7301,7 +7321,7 @@
         dateNewOunce.push({
           x: Data.theDates[index],
           y: d,
-          marker: { radius: 5, fillColor: "gold" },
+          marker: { radius: 3, fillColor: "gold" },
         });
       });
 
@@ -7311,7 +7331,14 @@
         dateNewDollar.push({
           x: Data.theDates[index],
           y: d,
-          marker: { radius: 5, fillColor: "gold" },
+          marker: {
+            radius: Math.floor(Math.random() * (10 - 1) + 1),
+            fillColor: `rgba(${Math.floor(
+              Math.random() * (256 - 10) + 10
+            )},${Math.floor(Math.random() * (256 - 10) + 10)},${Math.floor(
+              Math.random() * (256 - 10) + 10
+            )},1)`,
+          },
         });
       });
 
@@ -7321,13 +7348,13 @@
         dateNewG18.push({
           x: Data.theDates[index],
           y: d,
-          marker: { radius: 5, fillColor: "gold" },
+          marker: { radius: 10, fillColor: "gold" },
         });
       });
 
       Highcharts.stockChart("container", {
         chart: {
-          type: "spline",
+          type: "scatter",
         },
         title: {
           text: "نمودار تغییرات قیمت طلا",
@@ -7357,9 +7384,13 @@
           {
             name: "قیمت طلا",
             data: dateNewG18,
-          }, {
+          },
+          {
             name: "قیمت طلا",
             data: dateNewDollar,
+            marker: {
+              color: "#333",
+            },
           },
         ],
       });
