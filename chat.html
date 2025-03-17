@@ -7289,12 +7289,37 @@
           ],
         },
       };
+      const datasets = {
+        Ounce: Data.Dics.Ounce.map((value) => value * 30000),
+        Dollar: Data.Dics.Dollar.map((value) => value * 900),
+        G18: Data.Dics.G18.map((value) => value * 10),
+      };
 
-      let dateNew = [];
+      let dateNewOunce = [];
 
-      Data.Dics.Ounce.forEach((d, index) => {
-        dateNew.push({
-          x: Data.Dics[index],
+      datasets.Ounce.forEach((d, index) => {
+        dateNewOunce.push({
+          x: Data.theDates[index],
+          y: d,
+          marker: { radius: 5, fillColor: "gold" },
+        });
+      });
+
+      let dateNewDollar = [];
+
+      datasets.Dollar.forEach((d, index) => {
+        dateNewDollar.push({
+          x: Data.theDates[index],
+          y: d,
+          marker: { radius: 5, fillColor: "gold" },
+        });
+      });
+
+      let dateNewG18 = [];
+
+      datasets.G18.forEach((d, index) => {
+        dateNewG18.push({
+          x: Data.theDates[index],
           y: d,
           marker: { radius: 5, fillColor: "gold" },
         });
@@ -7313,7 +7338,7 @@
             text: "تاریخ",
           },
           labels: {
-            format: "{value:%d %b %Y}", // فرمت نمایش تاریخ به میلادی
+            format: "{value:%Y.%m.%d}", // فرمت نمایش تاریخ به میلادی
           },
         },
         yAxis: {
@@ -7326,8 +7351,15 @@
         },
         series: [
           {
+            name: "قیمت انس",
+            data: dateNewOunce,
+          },
+          {
             name: "قیمت طلا",
-            data: dateNew,
+            data: dateNewG18,
+          }, {
+            name: "قیمت طلا",
+            data: dateNewDollar,
           },
         ],
       });
